@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/login_navigation_login"
+        android:checkable="false"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/title_login" />
+
+    <item
+        android:id="@+id/login_navigation_create_account"
+        android:enabled="true"
+        android:icon="@drawable/ic_account_circle_black_24dp"
+        android:title="@string/title_create_account"
+        android:visible="true" />
+
+    <item
+        android:id="@+id/login_navigation_reset_password"
+        android:enabled="true"
+        android:icon="@drawable/ic_help_outline_black_24dp"
+        android:title="@string/title_reset_password"
+        android:visible="true" />
+
+    <item
+        android:id="@+id/login_navigation_exit"
+        android:enabled="true"
+        android:icon="@drawable/ic_exit_to_app_black_24dp"
+        android:title="@string/title_exit"
+        android:visible="true"></item>
+
+
+</menu>
