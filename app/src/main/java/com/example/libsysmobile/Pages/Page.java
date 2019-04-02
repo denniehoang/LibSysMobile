@@ -41,6 +41,7 @@ public class Page extends Activity {
                     // If already viewing the Login Page, clicking login on the bottom navigation will do nothing.
                     if (!currentPage.equals(getString(R.string.login_navigation_login_name_page_name))) {
                         changePage(Page.this, LoginPage.class);
+                        bottomNavigationView.getMenu().findItem(R.id.login_navigation_login).setChecked(true);
                         shiftViewLeft();
                     }
                     break;
@@ -48,6 +49,7 @@ public class Page extends Activity {
                 case R.id.login_navigation_create_account:
                     if (!currentPage.equals(getString(R.string.login_navigation_create_account_name_page_name))) {
                         changePage(Page.this, CreateAccountPage.class);
+                        bottomNavigationView.getMenu().findItem(R.id.login_navigation_login).setChecked(true);
                         if (currentPage.equals("ResetPasswordPage")) {
                             shiftViewLeft();
                         } else {
@@ -55,6 +57,7 @@ public class Page extends Activity {
                         }
                     }
                     break;
+                // Press 'Reset Password' on Bottom Navigation
                 case R.id.login_navigation_reset_password:
                     if (!currentPage.equals("ResetPasswordPage")) {
                         changePage(Page.this, ResetPasswordPage.class);

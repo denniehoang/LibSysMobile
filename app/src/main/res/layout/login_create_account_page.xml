@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".Pages.CreateAccountPage">
 
-
     <EditText
         android:id="@+id/password_createAccount_textField"
         android:layout_width="250dp"
@@ -114,7 +113,7 @@
         app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.20999998"></AutoCompleteTextView>
+        app:layout_constraintVertical_bias="0.20999998"/>
 
     <TextView
         android:id="@+id/firstName_label"

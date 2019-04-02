@@ -31,5 +31,11 @@
 
     //Member Home Navigation
     <string name="title_home">Home</string>
+    <string name="title_activity_testing">testing</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="member_home">Member Home</string>
+    <string name="librarian_home">Librarian Home</string>
+    <string name="administrator_home">Administrator Home</string>
 
 </resources>

@@ -13,6 +13,10 @@ import com.example.libsysmobile.Users.User;
 
 public class LoginPage extends Page {
 
+    private EditText emailEditText;
+    private EditText passwordEditText;
+    private String emailAddress;
+    private String password;
     private User currentUser;
     private String firstName;
     private String lastName;
@@ -27,10 +31,10 @@ public class LoginPage extends Page {
     //performs action on Login Button Click on the Login Page
 
     public void loginOnClick(View view) {
-        EditText emailTextField = findViewById(R.id.email_login_textField);
-        EditText passwordTextField = findViewById(R.id.email_login_textField);
-        String emailAddress = emailTextField.getText().toString();
-        String password = passwordTextField.getText().toString();
+        emailEditText = findViewById(R.id.email_login_textField);
+        passwordEditText = findViewById(R.id.password_login_textField);
+        emailAddress = emailEditText.getText().toString();
+        password = passwordEditText.getText().toString();
 
         //    queryLogin(emailAddress,password);
 
