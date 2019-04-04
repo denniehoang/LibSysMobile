@@ -4,6 +4,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
 import com.example.libsysmobile.R;
 import com.example.libsysmobile.Users.Administrator;
 import com.example.libsysmobile.Users.Librarian;
@@ -36,7 +43,7 @@ public class LoginPage extends Page {
         emailAddress = emailEditText.getText().toString();
         password = passwordEditText.getText().toString();
 
-        //    queryLogin(emailAddress,password);
+        queryLogin(emailAddress,password);
 
         // Bypassing the queryLogin to test pages
         login("memberF", "memberL", 0);
@@ -46,6 +53,32 @@ public class LoginPage extends Page {
     Validate/Search in SQL for proper email address and password
      */
     private void queryLogin(String emailAddress, String password) {
+        final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+        alertDialog.setTitle("Login Status");
+
+        // Instantiate the RequestQueue.
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url ="http://10.0.2.2:8084/api/v1/users";
+
+        // Request a string response from the provided URL.
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        alertDialog.setMessage("Response is: "+ response);
+                        alertDialog.show();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                alertDialog.setMessage("That didn't work!");
+                alertDialog.show();
+            }
+        });
+
+        // Add the request to the RequestQueue.
+        queue.add(stringRequest);
+        
         boolean userExists = true;
         if (userExists) {
             this.firstName = ""; //first name from SQL
