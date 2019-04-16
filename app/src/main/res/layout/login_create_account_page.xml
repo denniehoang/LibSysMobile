@@ -5,7 +5,7 @@
     android:id="@+id/createAccount_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Pages.CreateAccountPage">
+    tools:context=".login_pages.CreateAccountPage">
 
     <EditText
         android:id="@+id/password_createAccount_textField"
@@ -143,7 +143,8 @@
         app:layout_constraintHorizontal_bias="0.566"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.755" />
+        app:layout_constraintVertical_bias="0.755"
+        android:onClick="createAccountOnClick"/>
 
 
     <android.support.design.widget.BottomNavigationView

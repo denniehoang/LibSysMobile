@@ -33,5 +33,4 @@
         android:title="@string/title_exit"
         android:visible="true"/>
 
-
 </menu>

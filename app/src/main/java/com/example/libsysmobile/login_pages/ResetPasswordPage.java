@@ -1,4 +1,4 @@
-package com.example.libsysmobile.Pages;
+package com.example.libsysmobile.login_pages;
 
 import android.os.Bundle;
 

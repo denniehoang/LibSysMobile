@@ -1,20 +1,26 @@
-package com.example.libsysmobile.Pages;
+package com.example.libsysmobile.login_pages;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.view.MenuItem;
 
+import com.example.libsysmobile.AsyncResponse;
 import com.example.libsysmobile.MainActivity;
 import com.example.libsysmobile.R;
 
+import java.util.List;
 
-public class Page extends Activity {
+
+public abstract class Page extends Activity implements AsyncResponse {
 
     private BottomNavigationView bottomNavigationView;
     private String currentPage;
+    public AlertDialog.Builder alertDialogBuilder;
+    public AlertDialog alertDialog;
 
     protected void newPage(int pageLayout, int navigationView, String currentPage) {
         showPage(pageLayout);
@@ -40,7 +46,7 @@ public class Page extends Activity {
                 case R.id.login_navigation_login:
                     // If already viewing the Login Page, clicking login on the bottom navigation will do nothing.
                     if (!currentPage.equals(getString(R.string.login_navigation_login_name_page_name))) {
-                        changePage(Page.this, LoginPage.class);
+                        changePage(Page.this, com.example.libsysmobile.login_pages.LoginPage.class);
                         bottomNavigationView.getMenu().findItem(R.id.login_navigation_login).setChecked(true);
                         shiftViewLeft();
                     }
@@ -48,7 +54,7 @@ public class Page extends Activity {
                 // Press 'Create Account' on Bottom Navigation
                 case R.id.login_navigation_create_account:
                     if (!currentPage.equals(getString(R.string.login_navigation_create_account_name_page_name))) {
-                        changePage(Page.this, CreateAccountPage.class);
+                        changePage(Page.this, com.example.libsysmobile.login_pages.CreateAccountPage.class);
                         bottomNavigationView.getMenu().findItem(R.id.login_navigation_login).setChecked(true);
                         if (currentPage.equals("ResetPasswordPage")) {
                             shiftViewLeft();
@@ -60,7 +66,7 @@ public class Page extends Activity {
                 // Press 'Reset Password' on Bottom Navigation
                 case R.id.login_navigation_reset_password:
                     if (!currentPage.equals("ResetPasswordPage")) {
-                        changePage(Page.this, ResetPasswordPage.class);
+                        changePage(Page.this, com.example.libsysmobile.login_pages.ResetPasswordPage.class);
                         shiftViewRight();
                     }
                     break;
@@ -86,4 +92,6 @@ public class Page extends Activity {
         startActivity(nextIntent);
     }
 
+    @Override
+    public void processFinish(List<String> resultList) {    }
 }

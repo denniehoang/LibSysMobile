@@ -12,7 +12,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.example.libsysmobile.Pages.LoginPage;
+import com.example.libsysmobile.login_pages.LoginPage;
+import com.example.libsysmobile.user_home_pages.MemberHomePage;
 
 public class MainActivity extends AppCompatActivity {
 

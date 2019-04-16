@@ -3,12 +3,20 @@
 
     <item
         android:id="@+id/home_navigation_home"
+        android:checkable="true"
+        android:enabled="true"
         android:icon="@drawable/ic_home_black_24dp"
-        android:title="Home" />
+        android:title="@string/title_home"
+        android:visible="true" />
+
 
     <item
         android:id="@+id/home_navigation_exit"
+        android:checkable="true"
+        android:enabled="true"
         android:icon="@drawable/ic_exit_to_app_black_24dp"
-        android:title="Exit" />
+        android:title="@string/title_exit"
+        android:visible="true"/>
+
 
 </menu>
