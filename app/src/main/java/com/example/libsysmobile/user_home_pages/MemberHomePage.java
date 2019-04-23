@@ -9,7 +9,8 @@ public class MemberHomePage extends Page {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // super.newPage(R.layout.home_page_member, R.id.login_navigation, this.getClass().getSimpleName());
+        setContentView(R.layout.home_page_member);
     }
+
 
 }

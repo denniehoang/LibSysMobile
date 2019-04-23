@@ -3,9 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/login_container"
+    android:background="@drawable/background_user"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".login_pages.LoginPage">
+    tools:context=".MainActivity">
 
 
     <TextView
@@ -70,6 +71,7 @@
         app:layout_constraintVertical_bias="0.415"
         tools:targetApi="o" />
 
+    <!-- add android:onClick= to "loginOnClick" for production-->
     <Button
         android:id="@+id/login_button"
         android:layout_width="199dp"
@@ -78,7 +80,7 @@
         android:layout_marginTop="375dp"
         android:layout_marginEnd="53dp"
         android:layout_marginBottom="125dp"
-        android:onClick="loginOnClick"
+
         android:text="@string/title_login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -103,6 +105,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
+
 
     <TextView
         android:id="@+id/emailAddress_label"

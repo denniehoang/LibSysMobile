@@ -12,17 +12,26 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name">
+            android:name=".MainActivity">
+        </activity>
+        <activity android:name=".Pages.SearchMember"/>
+        <activity android:name=".login_pages.LoginPage" />
+        <activity android:name=".login_pages.Login"/>
+        <activity android:name=".login_pages.CreateAccountPage" />
+        <activity android:name=".login_pages.ResetPasswordPage" />
+        <activity android:name=".user_home_pages.LibrarianHomePage"/>
+        <activity android:name=".user_home_pages.AdminHomePage"/>
+        <activity android:name=".user_home_pages.MemberHomePage"/>
+        <activity
+            android:name=".login_pages.SplashPage"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".login_pages.LoginPage" />
-        <activity android:name=".login_pages.CreateAccountPage" />
-        <activity android:name=".login_pages.ResetPasswordPage" />
     </application>
 
 </manifest>

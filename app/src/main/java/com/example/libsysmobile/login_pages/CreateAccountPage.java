@@ -9,6 +9,7 @@ import android.text.AlteredCharSequence;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.libsysmobile.R;
 import com.example.libsysmobile.queries.DbQuery;
@@ -24,17 +25,26 @@ public class CreateAccountPage extends Page {
     private EditText et_emailAddress;
     private EditText et_password;
     private DbQuery queryCreateAccount;
-
+    private TextView signIn;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.newPage(R.layout.login_create_account_page, R.id.login_navigation, this.getClass().getSimpleName());
+        setContentView(R.layout.create_account);
         alertDialogBuilder = new AlertDialog.Builder(this);
-        et_firstName = findViewById(R.id.firstName_createAccount_textField);
-        et_lastName = findViewById(R.id.lastName_createAccount_textField);
-        et_emailAddress = findViewById(R.id.emailAddress_createAccount_textField);
-        et_password = findViewById(R.id.password_createAccount_textField);
+        et_firstName = findViewById(R.id.new_first_name);
+        et_lastName = findViewById(R.id.new_last_name);
+        et_emailAddress = findViewById(R.id.new_email);
+        et_password = findViewById(R.id.new_password);
+
+        signIn = (TextView)findViewById(R.id.return_to_sign_in);
+        signIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent signInIntent = new Intent(CreateAccountPage.this, Login.class);
+                startActivity(signInIntent);
+            }
+        });
     }
 
     // Performs action on Create Account button on Create Account Page

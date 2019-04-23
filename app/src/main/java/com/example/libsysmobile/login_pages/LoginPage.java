@@ -3,13 +3,16 @@ package com.example.libsysmobile.login_pages;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.libsysmobile.R;
 import com.example.libsysmobile.queries.DbQuery;
 import com.example.libsysmobile.queries.QueryLoginAccount;
+import com.example.libsysmobile.user_home_pages.LibrarianHomePage;
 
 import java.util.List;
 
@@ -17,11 +20,23 @@ public class LoginPage extends Page {
     private EditText et_emailAddress;
     private EditText et_password;
     private boolean isValid;
+    private Button bypassLoginBtn; //test buttom to bypass login
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.newPage(R.layout.login_login_page, R.id.login_navigation, this.getClass().getSimpleName());
+//       setContentView(R.layout.login_login_page);
+        // code to test navigation to user home pages
+        bypassLoginBtn = (Button) findViewById(R.id.login_button);
+        bypassLoginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openLibrarianHomePage();
+            }
+        });
+
+        //
         alertDialogBuilder = new AlertDialog.Builder(this);
         et_emailAddress = findViewById(R.id.email_login_textField);
         et_password = findViewById(R.id.password_login_textField);
@@ -88,6 +103,7 @@ public class LoginPage extends Page {
                     break;
                 case ("Librarian"):
                     // Go to librarian home page
+                    openLibrarianHomePage();
                     break;
                 case("Administrator"):
                     // go to admin home page
@@ -109,6 +125,12 @@ public class LoginPage extends Page {
         } else {
             return true;
         }
+    }
+
+    //open librarian homepage
+    public void openLibrarianHomePage(){
+        Intent intent = new Intent(this, LibrarianHomePage.class);
+        startActivity(intent);
     }
     }
 

@@ -38,5 +38,6 @@
     <string name="librarian_home">Librarian Home</string>
     <string name="administrator_home">Administrator Home</string>
     <string name="title_activity_home_navigation">home_navigation</string>
+    <string name="search_for_member">Search for member</string>
 
 </resources>

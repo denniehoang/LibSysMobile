@@ -3,4 +3,14 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <color name="pearlWhite">#F8F8F8</color>
+    <color name="pearlBlue">#DFFCFC</color>
+    <color name="pearlPurple">#F1E6FC</color>
+
+    <color name="theme1yellow">#FDB934</color>
+    <color name="theme1green">#008535</color>
+
+    <color name="textWhite">#FFF</color>
+    <color name="textBlack">#070707</color>
 </resources>
