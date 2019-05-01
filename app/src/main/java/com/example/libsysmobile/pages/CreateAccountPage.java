@@ -3,7 +3,6 @@ package com.example.libsysmobile.pages;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -25,7 +24,7 @@ public class CreateAccountPage extends Page {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login_create_account);
+        newPage(R.layout.login_create_account);
         alertDialogBuilder = new AlertDialog.Builder(this);
         et_emailAddress = findViewById(R.id.new_email);
         et_password = findViewById(R.id.new_password);
@@ -53,13 +52,12 @@ public class CreateAccountPage extends Page {
     @Override
     public void processFinish(JSONObject result) throws JSONException {
         String response = result.get("memberID").toString();
-
-
-        Log.d("Created user: ", response);
+        int user_id = Integer.parseInt(response);
+        decideTask(user_id);
     }
 
     // Processes action dependant on query result
-    private void decideTask(int user_id, String accessLevel) {
+    private void decideTask(int user_id) {
         queryCreateAccount.cancel(true);
         if (user_id < 0) {
             // user already exists, could not create account
@@ -80,7 +78,6 @@ public class CreateAccountPage extends Page {
                     });
 
         } else {
-            //TODO: Login to Member Home Page
             changePage(CreateAccountPage.this, MemberHomePage.class);
         }
     }

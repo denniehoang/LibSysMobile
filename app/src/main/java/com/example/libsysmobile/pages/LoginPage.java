@@ -53,8 +53,13 @@ public class LoginPage extends Page {
         }
     }
 
+    // Delete when done
+    public void testOnClick(View view) {
+        changePage(this, SearchBookPage.class);
+    }
+
     public void createAccountOnClick(View view) {
-        changePage(LoginPage.this, CreateAccountPage.class);
+        changePage(this, CreateAccountPage.class);
     }
 
     public void resetPasswordOnClick(View view) {
@@ -95,7 +100,6 @@ public class LoginPage extends Page {
                 alertDialog = alertDialogBuilder.create();
                 alertDialog.show();
                     break;
-
         }
     }
 

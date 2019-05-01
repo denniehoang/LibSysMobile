@@ -18,6 +18,7 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
 public abstract class DbQuery extends AsyncTask<String, String, String> implements AsyncResponse {
+    public String mainURL = "http://ec2-18-218-197-217.us-east-2.compute.amazonaws.com:8084/api/v1";
     public JSONObject result;
     public ProgressDialog progressDialog;
     public AsyncResponse delegate = null;
@@ -29,7 +30,6 @@ public abstract class DbQuery extends AsyncTask<String, String, String> implemen
 
     // Connecting to the database, running the query, and returning the result
     public void connect(String filePath, String requestMethod, Boolean doOutput, Boolean doInput, JSONObject cred) {
-
         try {
             URL url = new URL(filePath);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -41,6 +41,32 @@ public abstract class DbQuery extends AsyncTask<String, String, String> implemen
             OutputStreamWriter wr = new OutputStreamWriter(httpURLConnection.getOutputStream());
             wr.write(cred.toString());
             wr.flush();
+            StringBuilder sb = new StringBuilder();
+            int HttpResult = httpURLConnection.getResponseCode();
+            if (HttpResult == HttpURLConnection.HTTP_OK) {
+                BufferedReader br = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream(), StandardCharsets.UTF_8));
+                String line = null;
+                while ((line = br.readLine()) != null) {
+                    sb.append(line + "\n");
+                }
+                br.close();
+            }
+            result = new JSONObject(sb.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Testing for JQueries
+    public void connectJQuery(String filePath, String requestMethod, Boolean doOutput, Boolean doInput) {
+        try {
+            URL url = new URL(filePath);
+            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+            httpURLConnection.setRequestMethod(requestMethod);
+            httpURLConnection.setDoOutput(doOutput);
+            httpURLConnection.setRequestProperty("Authorization", "Bearer " + "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3NMZXZlbCI6ImFkbWluIiwiaWF0IjoxNTU2NzQ1MTgyLCJleHAiOjE1NTY3ODgzODIsImlzcyI6IkxpYlN5cyBNb2JpbGUiLCJzdWIiOiJncm91cDIuaWNzNDk5QGdtYWlsLmNvbSJ9.mg05Mciho_dL-1HiZLPieYY9KMmQoWdlw3NgCdBz94Q7VvptujbWmWhWvOOpEM-BbopR9rPYQj5yviUQzzrE7HNLx-zdKhF6PG_Cda42U9MjHuzIkpHWJyxNBzor-N3VUCMeIt5p2y1e-LM9t2Cp1osAoUQlB_WSUSmMV9orP8A");
             StringBuilder sb = new StringBuilder();
             int HttpResult = httpURLConnection.getResponseCode();
             if (HttpResult == HttpURLConnection.HTTP_OK) {

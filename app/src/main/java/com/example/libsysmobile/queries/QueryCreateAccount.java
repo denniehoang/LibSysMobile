@@ -6,7 +6,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class QueryCreateAccount extends DbQuery {
-    private String apiUrl = "http://ec2-18-218-197-217.us-east-2.compute.amazonaws.com:8084/api/v1/users/create";
+    private String apiUrl = mainURL + "/users/create";
 
     public QueryCreateAccount(Context context) {
         super(context);
