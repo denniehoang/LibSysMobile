@@ -1,21 +1,12 @@
 package com.example.libsysmobile.user_home_pages;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
 
-import com.example.libsysmobile.Pages.SearchMember;
 import com.example.libsysmobile.R;
-import com.example.libsysmobile.login_pages.Page;
+import com.example.libsysmobile.pages.Page;
 
-public class LibrarianHomePage extends AppCompatActivity {
-    private ImageButton searchMemberButton;
-//    private ImageButton searchBook;
-//    private ImageButton addBook;
-//    private ImageButton removebook;
+public class LibrarianHomePage extends Page {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,8 +14,18 @@ public class LibrarianHomePage extends AppCompatActivity {
         setContentView(R.layout.home_page_librarian);
     }
 
-    private void openSearchMember() {
-        Intent intent = new Intent(this, SearchMember.class);
-        startActivity(intent);
+    // Handles Search Member
+    public void searchMemberOnClick(View view) {
+
     }
+
+    public void searchBookOnClick(View view) {
+
+    }
+
+
+    public void adjustInventoryOnClick(View view) {
+
+    }
+
 }

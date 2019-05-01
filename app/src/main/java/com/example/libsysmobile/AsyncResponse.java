@@ -1,7 +1,8 @@
 package com.example.libsysmobile;
 
-import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public interface AsyncResponse {
-    void processFinish(List<String> result);
+    void processFinish(JSONObject result) throws JSONException;
 }

@@ -1,35 +1,24 @@
 package com.example.libsysmobile.queries;
 
-
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 
 import com.example.libsysmobile.AsyncResponse;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
+import java.nio.charset.StandardCharsets;
 
-public class DbQuery extends AsyncTask<String, String, String> implements AsyncResponse {
-
-    public BufferedReader bufferedReader;
-    public BufferedWriter bufferedWriter;
-    public OutputStream outputStream;
-    public InputStream inputStream;
-    public String post_data;
-    public final String encodingType = "UTF-8";
-    List<String> resultList = new ArrayList<>();
-    public String result = "";
+public abstract class DbQuery extends AsyncTask<String, String, String> implements AsyncResponse {
+    public JSONObject result;
     public ProgressDialog progressDialog;
     public AsyncResponse delegate = null;
 
@@ -38,39 +27,34 @@ public class DbQuery extends AsyncTask<String, String, String> implements AsyncR
         this.progressDialog = new ProgressDialog(context);
     }
 
-    // Returns results to the main thread upon thread complete
-    @Override
-    protected void onPostExecute(String result) {
-        progressDialog.dismiss();
-        delegate.processFinish(this.resultList);
-    }
-
     // Connecting to the database, running the query, and returning the result
-    public void connect(String filePath, String requestMethod, Boolean doOutput, Boolean doInput) {
+    public void connect(String filePath, String requestMethod, Boolean doOutput, Boolean doInput, JSONObject cred) {
+
         try {
             URL url = new URL(filePath);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod(requestMethod);
             httpURLConnection.setDoOutput(doOutput);
             httpURLConnection.setDoInput(doInput);
-            outputStream = httpURLConnection.getOutputStream();
-            bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, encodingType));
-            bufferedWriter.write(post_data);
-            bufferedWriter.flush();
-            outputStream.close();
-            inputStream = httpURLConnection.getInputStream();
-            bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
-            String line = "";
-            while ((line = bufferedReader.readLine()) != null) {
-                result += line;
+            httpURLConnection.setRequestProperty("Content-Type", "application/json");
+            httpURLConnection.setRequestProperty("Accept", "application/json");
+            OutputStreamWriter wr = new OutputStreamWriter(httpURLConnection.getOutputStream());
+            wr.write(cred.toString());
+            wr.flush();
+            StringBuilder sb = new StringBuilder();
+            int HttpResult = httpURLConnection.getResponseCode();
+            if (HttpResult == HttpURLConnection.HTTP_OK) {
+                BufferedReader br = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream(), StandardCharsets.UTF_8));
+                String line = null;
+                while ((line = br.readLine()) != null) {
+                    sb.append(line + "\n");
+                }
+                br.close();
             }
-            bufferedReader.close();
-            inputStream.close();
-            httpURLConnection.disconnect();
-            delimitResult(result);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
+            result = new JSONObject(sb.toString());
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
             e.printStackTrace();
         }
     }
@@ -81,7 +65,6 @@ public class DbQuery extends AsyncTask<String, String, String> implements AsyncR
         return null;
     }
 
-
     // Description used for the progress dialog
     protected void runProgressDialog(String display) {
         progressDialog.setMessage(display);
@@ -91,21 +74,19 @@ public class DbQuery extends AsyncTask<String, String, String> implements AsyncR
         progressDialog.show();
     }
 
-    // Setting POST data for the php script
-    protected void setPost_data(String post_data) {
-        this.post_data = post_data;
+    // Returns results to the main thread upon thread complete
+    @Override
+    protected void onPostExecute(String result) {
+        progressDialog.dismiss();
+        try {
+            delegate.processFinish(this.result);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     // Interface method, overridden in main thread to return result
     @Override
-    public void processFinish(List<String> resultList) {
-    }
-
-
-    private void delimitResult(String result){
-        String results[] = result.split("<br>");
-        for(String entity: results){
-            resultList.add(entity);
-        }
+    public void processFinish(JSONObject result) {
     }
 }

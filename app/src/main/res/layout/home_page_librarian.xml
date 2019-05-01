@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_user"
-    tools:context=".login_pages.LoginPage">
+    tools:context=".user_home_pages.LibrarianHomePage">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -76,6 +76,7 @@
                         android:id="@+id/btn_SearchMember"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
+                        android:onClick="searchMemberOnClick"
                         app:srcCompat="@drawable/search_member" />
 
                     <TextView
@@ -112,6 +113,7 @@
                         android:id="@+id/btn_librarian_searchBook"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
+                        android:onClick="searchBookOnClick"
                         android:src="@drawable/search" />
 
                     <TextView
@@ -146,6 +148,7 @@
                     <ImageButton
                         android:layout_width="100dp"
                         android:layout_height="100dp"
+                        android:onClick="adjustInventoryOnClick"
                         android:src="@drawable/adjust_inventory" />
 
                     <TextView

@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_admin"
-    tools:context=".MainActivity">
+    tools:context=".user_home_pages.AdminHomePage">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -76,6 +76,7 @@
                         android:id="@+id/btn_admin_unlockUser"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
+                        android:onClick="unlockUserOnClick"
                         app:srcCompat="@drawable/unlock_user" />
 
                     <TextView
@@ -112,6 +113,7 @@
                         android:id="@+id/btn_admin_manageUser"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
+                        android:onClick="manageUserOnClick"
                         android:src="@drawable/manage_users" />
 
                     <TextView
@@ -147,6 +149,7 @@
                         android:id="@+id/btn_admin_setFine"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
+                        android:onClick="setFineOnClick"
                         android:src="@drawable/set_fine" />
 
                     <TextView
@@ -182,6 +185,7 @@
                         android:id="@+id/btn_admin_issueFine"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
+                        android:onClick="issueFineOnClick"
                         android:src="@drawable/issue_fine" />
 
                     <TextView

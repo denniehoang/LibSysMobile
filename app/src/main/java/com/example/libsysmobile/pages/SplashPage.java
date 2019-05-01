@@ -1,4 +1,4 @@
-package com.example.libsysmobile.login_pages;
+package com.example.libsysmobile.pages;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,7 +21,7 @@ public class SplashPage extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_page);
-        splashLogo = (ImageView)findViewById(R.id.splash_logo);
+        splashLogo = findViewById(R.id.splash_logo);
 
         new Handler().postDelayed(new Runnable() {
             @Override

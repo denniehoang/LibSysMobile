@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_user"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    tools:context=".pages.LoginPage">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -81,10 +83,11 @@
 
             <TextView
                 android:id="@+id/reset_password"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="203dp"
+                android:layout_height="34dp"
                 android:layout_gravity="end"
                 android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:onClick="resetPasswordOnClick"
                 android:text="Forgot password? "
                 android:textColor="@android:color/black" />
 
@@ -97,6 +100,7 @@
                 android:backgroundTint="@android:color/holo_blue_dark"
                 android:text="Log In"
                 android:textColor="@android:color/white"
+                android:onClick="loginOnClick"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -120,6 +124,7 @@
                     android:layout_gravity="center"
                     android:text="Create an Account"
                     android:textColor="@android:color/black"
+                    android:onClick="createAccountOnClick"
                     android:textStyle="bold" />
             </LinearLayout>
 

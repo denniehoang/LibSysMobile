@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    tools:context=".pages.CreateAccountPage">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -129,6 +131,7 @@
                     android:backgroundTint="@color/colorPrimaryDark"
                     android:text="Sign UP"
                     android:textColor="@android:color/white"
+                    android:onClick="createAccountOnClick"
                     android:textStyle="bold" />
 
                 <LinearLayout
@@ -156,6 +159,7 @@
                         android:text=" Sign In "
                         android:textColor="@android:color/black"
                         android:textSize="16sp"
+                        android:onClick="signInOnClick"
                         android:textStyle="bold" />
                 </LinearLayout>
 
