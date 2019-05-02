@@ -4,11 +4,11 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import com.example.libsysmobile.Item;
 import com.example.libsysmobile.R;
 import com.example.libsysmobile.Rental;
 import com.example.libsysmobile.user_home_pages.MemberHomePage;
@@ -21,8 +21,7 @@ import java.util.ArrayList;
 
 public class ExtendRentalPage extends Page {
 
-    private ArrayList<Item> listOfItems = new ArrayList<>();
-    private ArrayList<String> listOfResults = new ArrayList<>();
+    public ArrayList<String> listOfResults = new ArrayList<>();
     private ArrayAdapter<String> adapter;
     private ListView resultsView;
     private EditText et_title;
@@ -53,15 +52,36 @@ public class ExtendRentalPage extends Page {
             alertDialog = alertDialogBuilder.create();
             alertDialog.show();
         }
+        resultsView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                alertDialogBuilder
+                        .setTitle("Title: " + currentUser.currentRentalsList.get(position).title)
+                        .setMessage("Loan ID: " + currentUser.currentRentalsList.get(position).loanID + "\nItem ID: " + currentUser.currentRentalsList.get(position).itemID + "\nDue Date: " + currentUser.currentRentalsList.get(position).dueDate + "\nInstance ID: " + currentUser.currentRentalsList.get(position).instanceItemID + "\n")
+                        .setPositiveButton("Extend", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                //Extend the book
+                            }
+                        })
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // goes back to browse page
+                            }
+                        });
+                alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+            }
+        });
     }
 
     private void populateRentals() {
         if (currentUser.currentRentalsList.size() > 0) {
             for (Rental rental : currentUser.currentRentalsList) {
-                addItems(rental.title);
+                addItems(String.valueOf(rental.title));
             }
         }
-
     }
 
     private boolean isRentalsEmpty() {
@@ -69,7 +89,6 @@ public class ExtendRentalPage extends Page {
     }
 
     public void extendOnClick(View view) {
-        // extension query
         // runQuery();
     }
 
@@ -86,14 +105,6 @@ public class ExtendRentalPage extends Page {
     public void processFinish(JSONObject result) throws JSONException {
         JSONArray itemsArray = result.getJSONArray("items");
         for (int i = 0; i < itemsArray.length(); i++) {
-            JSONObject item = itemsArray.getJSONObject(i);
-            int itemID = item.getInt("item_ID");
-            String title = item.getString("title");
-            int isbn = item.getInt("ISBN");
-            String upc = item.getString("UPC");
-            Item book = new Item(itemID, title, isbn, upc);
-            listOfItems.add(book);
-            addItems(title);
         }
     }
 

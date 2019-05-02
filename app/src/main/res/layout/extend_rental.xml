@@ -48,8 +48,8 @@
 
             <ListView
                 android:id="@+id/listView_rentalResults"
-                android:layout_width="366dp"
-                android:layout_height="479dp"
+                android:layout_width="362dp"
+                android:layout_height="594dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.082"
@@ -74,26 +74,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.083"
-                tools:ignore="MissingConstraints" />
-
-            <Button
-                android:id="@+id/search_for_book_button2"
-                android:layout_width="325dp"
-                android:layout_height="48dp"
-                android:layout_gravity="bottom"
-                android:layout_margin="24dp"
-                android:background="@drawable/btn_corner"
-                android:backgroundTint="@color/theme1green"
-                android:onClick="extendOnClick"
-                android:text="Extend"
-                android:textColor="@android:color/white"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.228"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0"
                 tools:ignore="MissingConstraints" />
 
 

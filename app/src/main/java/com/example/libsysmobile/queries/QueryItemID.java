@@ -13,7 +13,7 @@ public class QueryItemID extends DbQuery {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        super.runProgressDialog("Searching...");
+        super.runProgressDialog("Logging in...");
     }
 
     // Runs script to database

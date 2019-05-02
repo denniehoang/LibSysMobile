@@ -5,6 +5,7 @@ import android.os.Bundle;
 import com.example.libsysmobile.Rental;
 import com.example.libsysmobile.queries.DbQuery;
 import com.example.libsysmobile.queries.QueryItemID;
+import com.example.libsysmobile.user_home_pages.MemberHomePage;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,6 +25,7 @@ public class GetRentalTitlePage extends Page {
         }
     }
 
+
     public void runQuery(String itemInstanceID) {
         DbQuery queryItemID = new QueryItemID(this);
         queryItemID.delegate = this;
@@ -32,14 +34,16 @@ public class GetRentalTitlePage extends Page {
 
     @Override
     public void processFinish(JSONObject result) throws JSONException {
-        String response = result.toString();
-        //   JSONObject title = result.get("data.title");
-        //Log.d("title", title);
+        JSONObject data = (JSONObject) result.get("data");
+        String title = data.get("title").toString();
+        JSONObject instance = (JSONObject) data.get("itemInstance");
+        int itemID = instance.getInt("item_ID");
+        currentUser.currentRentalsList.get(index).itemID = itemID;
+        currentUser.currentRentalsList.get(index).title = title;
         index++;
         if (index == currentUser.currentRentalsList.size()) {
-            changePage(this, ExtendRentalPage.class);
+            changePage(this, MemberHomePage.class);
         }
-
 
     }
 

@@ -6,6 +6,7 @@ import android.view.View;
 import com.example.libsysmobile.R;
 import com.example.libsysmobile.Rental;
 import com.example.libsysmobile.pages.BrowseBookPage;
+import com.example.libsysmobile.pages.ExtendRentalPage;
 import com.example.libsysmobile.pages.GetRentalTitlePage;
 import com.example.libsysmobile.pages.Page;
 import com.example.libsysmobile.pages.SearchBookPage;
@@ -18,14 +19,21 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Date;
+import java.util.concurrent.ExecutionException;
 
 public class MemberHomePage extends Page {
+
+    public static Boolean loaded = false;
+    private GetRentalTitlePage getRentalTitlePage = new GetRentalTitlePage();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home_page_member);
-        getUserInfo(currentUser.getMemberID());
+        if (!loaded) {
+            updateRentals(currentUser.getMemberID());
+        } else {
+            setContentView(R.layout.home_page_member);
+        }
     }
 
     public void searchBookOnClick(View view) {
@@ -37,27 +45,29 @@ public class MemberHomePage extends Page {
     }
 
     public void extendOnClick(View view) {
-        changePage(this, GetRentalTitlePage.class);
+        changePage(this, ExtendRentalPage.class);
     }
 
     public void myAccountOnClick(View view) {
         changePage(this, ViewAccountPage.class);
     }
 
-    public void getUserInfo(String memberID) {
-        updateRentals(memberID);
-    }
-
     public void updateRentals(String memberID) {
         DbQuery queryCurrentRentals = new QueryCurrentRentals(this);
         queryCurrentRentals.delegate = this;
         String id = String.valueOf(memberID);
-        queryCurrentRentals.execute(id);
+        try {
+            queryCurrentRentals.execute(id).get();
+            //  wait();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void processFinish(JSONObject result) throws JSONException {
-        String r = result.toString();
         JSONArray itemsArray = result.getJSONArray("data");
         for (int i = 0; i < itemsArray.length(); i++) {
             JSONObject rental = itemsArray.getJSONObject(i);
@@ -68,7 +78,8 @@ public class MemberHomePage extends Page {
             Rental rent = new Rental(loanID, itemInstanceID, dueDate);
             currentUser.currentRentalsList.add(rent);
         }
+        //  getRentalTitlePage.runSearch();
+        loaded = true;
+        changePage(this, GetRentalTitlePage.class);
     }
-
-
 }
