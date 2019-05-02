@@ -8,26 +8,13 @@ import com.example.libsysmobile.R;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class IssueFinePage extends Page {
-
+public class AssignLibrarianPage extends Page {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        switch (currentUser.userLevel) {
-            case "admin":
-                super.newPage(R.layout.issue_fine_admin);
-                break;
-            default:
-                super.newPage(R.layout.issue_fine);
-        }
-
+        super.newPage(R.layout.assign_librarian);
     }
-
-    public void issueFineOnClick(View view) {
-        runQuery();
-    }
-
 
     public void runQuery() {
 
@@ -36,5 +23,9 @@ public class IssueFinePage extends Page {
     @Override
     public void processFinish(JSONObject result) throws JSONException {
         String response = result.toString();
+    }
+
+    public void assignLibrarianOnClick(View view) {
+        runQuery();
     }
 }

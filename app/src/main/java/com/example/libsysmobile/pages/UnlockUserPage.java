@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.libsysmobile.R;
 import com.example.libsysmobile.queries.DbQuery;
 import com.example.libsysmobile.queries.QueryUnlockUser;
 import com.example.libsysmobile.user_home_pages.AdminHomePage;
@@ -16,12 +17,10 @@ public class UnlockUserPage extends Page {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //TODO: CREATE UNLOCK USER PAGE
-        // super.newPage(R.layout.);
+        super.newPage(R.layout.unlock_user);
     }
 
     public void unlockUserOnClick(View view) {
-        //TODO: GET EMAIL ADDRESS FROM UI
         String emailAddress = "";
         runQuery(emailAddress);
     }

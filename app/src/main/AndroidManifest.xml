@@ -37,6 +37,8 @@
         <activity android:name=".pages.ReturnBookPage" />
         <activity android:name=".pages.PayBalancePage" />
         <activity android:name=".pages.IssueFinePage" />
+        <activity android:name=".pages.AssignLibrarianPage" />
+        <activity android:name=".pages.SetFinePage" />
 
 
         <activity

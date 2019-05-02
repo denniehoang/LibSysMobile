@@ -13,6 +13,7 @@ public class QueryUnlockUser extends DbQuery {
         super(context);
     }
 
+
     // Displays process dialog to user indicating process in progress
     @Override
     protected void onPreExecute() {
