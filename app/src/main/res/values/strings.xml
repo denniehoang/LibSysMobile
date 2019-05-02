@@ -44,4 +44,8 @@
     <string name="navigation_drawer_open">Open Navigation Drawer</string>
     <string name="navigation_drawer_close">Close Navigation Drawer</string>
     <string name="search">Search</string>
+
+    <string name="member">LibSys Mobile - Member</string>
+    <string name="librarian">LibSys Mobile - Librarian</string>
+    <string name="admin">LibSys Mobile - Admin</string>
 </resources>

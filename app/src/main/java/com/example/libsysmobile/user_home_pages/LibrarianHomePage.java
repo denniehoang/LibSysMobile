@@ -28,4 +28,8 @@ public class LibrarianHomePage extends Page {
 
     }
 
+    public void manageUsersOnClick(View view) {
+
+    }
+
 }
