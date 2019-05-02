@@ -10,6 +10,7 @@ import android.widget.ListView;
 
 import com.example.libsysmobile.Item;
 import com.example.libsysmobile.R;
+import com.example.libsysmobile.Rental;
 import com.example.libsysmobile.user_home_pages.MemberHomePage;
 
 import org.json.JSONArray;
@@ -56,8 +57,8 @@ public class ExtendRentalPage extends Page {
 
     private void populateRentals() {
         if (currentUser.currentRentalsList.size() > 0) {
-            for (Item item : currentUser.currentRentalsList) {
-                addItems(item.getTitle());
+            for (Rental rental : currentUser.currentRentalsList) {
+                addItems(rental.title);
             }
         }
 

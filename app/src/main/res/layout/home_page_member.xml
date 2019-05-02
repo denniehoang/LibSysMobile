@@ -185,6 +185,7 @@
                     <ImageButton
                         android:layout_width="100dp"
                         android:layout_height="100dp"
+                        android:onClick="myAccountOnClick"
                         android:src="@drawable/my_account" />
 
                     <TextView
@@ -194,7 +195,6 @@
                         android:text="My Account"
                         android:textColor="#000"
                         android:textSize="18sp"
-                        android:onClick="myAccountOnClick"
                         android:textStyle="bold" />
 
                 </LinearLayout>

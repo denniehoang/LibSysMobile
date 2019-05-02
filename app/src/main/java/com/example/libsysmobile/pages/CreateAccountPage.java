@@ -9,7 +9,6 @@ import android.widget.EditText;
 import com.example.libsysmobile.R;
 import com.example.libsysmobile.queries.DbQuery;
 import com.example.libsysmobile.queries.QueryCreateAccount;
-import com.example.libsysmobile.user_home_pages.MemberHomePage;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -51,6 +50,7 @@ public class CreateAccountPage extends Page {
     // Gets the results from the query
     @Override
     public void processFinish(JSONObject result) throws JSONException {
+        String string = result.toString();
         String response = result.get("memberID").toString();
         int user_id = Integer.parseInt(response);
         decideTask(user_id);
@@ -72,13 +72,22 @@ public class CreateAccountPage extends Page {
                             et_emailAddress.getText().clear();
                             et_password.getText().clear();
                             et_firstName.requestFocus();
-                            alertDialog = alertDialogBuilder.create();
-                            alertDialog.show();
                         }
                     });
 
         } else {
-            changePage(CreateAccountPage.this, MemberHomePage.class);
+            alertDialogBuilder
+                    .setTitle("Create Account: Success!")
+                    .setMessage("Please check your email for confirmation and continue to Login.")
+                    .setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            changePage(CreateAccountPage.this, LoginPage.class);
+                        }
+                    });
+
         }
+        alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 }

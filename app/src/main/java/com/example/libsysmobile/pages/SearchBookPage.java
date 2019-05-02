@@ -1,8 +1,10 @@
 package com.example.libsysmobile.pages;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -36,6 +38,28 @@ public class SearchBookPage extends Page {
                 android.R.layout.simple_list_item_1,
                 listOfResults);
         resultsView.setAdapter(adapter);
+        resultsView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                alertDialogBuilder
+                        .setTitle("Title: " + listOfItems.get(position).getTitle())
+                        .setMessage("Item ID: " + listOfItems.get(position).getItemID() + "\nISBN: " + listOfItems.get(position).getISBN() + "\nUPC: " + listOfItems.get(position).getUpc() + "\n")
+                        .setPositiveButton("Reserve", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                //Reserve the book
+                            }
+                        })
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // goes back to browse page
+                            }
+                        });
+                alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+            }
+        });
     }
 
     public void searchBookOnClick(View view) {
@@ -56,6 +80,7 @@ public class SearchBookPage extends Page {
 
     @Override
     public void processFinish(JSONObject result) throws JSONException {
+        String response = result.toString();
         JSONArray itemsArray = result.getJSONArray("items");
         for (int i = 0; i < itemsArray.length(); i++) {
             JSONObject item = itemsArray.getJSONObject(i);
