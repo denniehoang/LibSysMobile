@@ -110,10 +110,10 @@
                     android:padding="10dp">
 
                     <ImageButton
-                        android:id="@+id/btn_admin_manageUser"
+                        android:id="@+id/btn_admin_assignLibrarian"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:onClick="manageUserOnClick"
+                        android:onClick="assignLibrarianOnClick"
                         android:src="@drawable/manage_users" />
 
                     <TextView

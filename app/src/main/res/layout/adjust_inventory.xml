@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_user"
-    tools:context=".user_home_pages.LibrarianHomePage">
+    tools:context=".pages.AdjustInventoryPage">
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -28,6 +28,17 @@
         <activity android:name=".pages.ExtendRentalPage" />
         <activity android:name=".pages.GetRentalTitlePage" />
         <activity android:name=".pages.ViewAccountPage" />
+        <activity android:name=".pages.SearchMemberPage" />
+        <activity android:name=".pages.AdjustInventoryPage" />
+        <activity android:name=".pages.AddBookPage" />
+        <activity android:name=".pages.RemoveBookPage" />
+        <activity android:name=".pages.ManageUserPage" />
+        <activity android:name=".pages.IssueBookPage" />
+        <activity android:name=".pages.ReturnBookPage" />
+        <activity android:name=".pages.PayBalancePage" />
+        <activity android:name=".pages.IssueFinePage" />
+
+
         <activity
             android:name=".pages.SplashPage"
             android:theme="@style/Theme.AppCompat.NoActionBar"

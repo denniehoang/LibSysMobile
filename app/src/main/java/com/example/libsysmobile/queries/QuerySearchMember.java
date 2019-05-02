@@ -2,11 +2,8 @@ package com.example.libsysmobile.queries;
 
 import android.content.Context;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class QuerySearchMember extends DbQuery {
-    String urlApi = mainURL + "/users/by/userID/:userID";
+    String urlApi = mainURL + "/users/by/memberID/";
 
 
     public QuerySearchMember(Context context) {
@@ -24,18 +21,9 @@ public class QuerySearchMember extends DbQuery {
     protected String doInBackground(String... params) {
         String id = params[0];
         int memberID = Integer.parseInt(id);
-        try {
-            super.connect(urlApi, "GET", true, true, createPostData(memberID));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        urlApi = urlApi + memberID;
+        super.connectJQuery(urlApi, "GET", false, true);
         return null;
     }
 
-    // Creating POST data to be sent to the api
-    private JSONObject createPostData(int memberID) throws JSONException {
-        JSONObject postData = new JSONObject();
-        postData.put("memberID", memberID);
-        return postData;
-    }
 }

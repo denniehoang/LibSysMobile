@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_user"
-    tools:context=".MainActivity">
+    tools:context=".pages.ManageUserPage">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -73,9 +73,10 @@
                     android:padding="10dp">
 
                     <ImageButton
-                        android:id="@+id/btn_member_browse"
+                        android:id="@+id/btn_issue_book"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
+                        android:onClick="issueBookOnClick"
                         android:src="@drawable/issue_book" />
 
                     <TextView
@@ -109,9 +110,10 @@
                     android:padding="10dp">
 
                     <ImageButton
-                        android:id="@+id/btn_member_search"
+                        android:id="@+id/btn_return_book"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
+                        android:onClick="returnBookOnClick"
                         android:src="@drawable/return_book" />
 
                     <TextView
@@ -144,8 +146,10 @@
                     android:padding="10dp">
 
                     <ImageButton
+                        android:id="@+id/btn_pay_balance"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
+                        android:onClick="payBalanceOnClick"
                         android:src="@drawable/pay_balance" />
 
                     <TextView
@@ -178,8 +182,10 @@
                     android:padding="10dp">
 
                     <ImageButton
+                        android:id="@+id/btn_issue_fine"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
+                        android:onClick="issueFineOnClick"
                         android:src="@drawable/issue_fine" />
 
                     <TextView

@@ -14,22 +14,22 @@ public class AdminHomePage extends Page {
         setContentView(R.layout.home_page_admin);
     }
 
-    public void manageUserOnClick(View view) {
-
-    }
-
     public void unlockUserOnClick(View view) {
 
     }
 
+    public void assignLibrarianOnClick(View view) {
+
+    }
 
     public void setFineOnClick(View view) {
 
     }
 
-
     public void issueFineOnClick(View view) {
 
     }
+
+
 }
 
