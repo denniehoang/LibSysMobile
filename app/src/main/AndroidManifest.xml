@@ -26,7 +26,8 @@
         <activity android:name=".pages.BrowseBookPage" />
         <activity android:name=".pages.UnlockUserPage" />
         <activity android:name=".pages.ExtendRentalPage" />
-        <activity android:name=".pages.TestPage" />
+        <activity android:name=".pages.GetRentalTitlePage" />
+        <activity android:name=".pages.ViewAccountPage" />
         <activity
             android:name=".pages.SplashPage"
             android:theme="@style/Theme.AppCompat.NoActionBar"

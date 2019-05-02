@@ -4,8 +4,9 @@ import java.util.ArrayList;
 
 public class User {
 
-    public ArrayList<Item> currentRentalsList;
+    public ArrayList<Rental> currentRentalsList;
     private String memberID;
+    public double feesOwed;
 
     public User(String memberID) {
         this.memberID = memberID;
@@ -16,7 +17,7 @@ public class User {
         return memberID;
     }
 
-    public void addRental(Item item) {
-        currentRentalsList.add(item);
+    public void addRental(Rental rental) {
+        currentRentalsList.add(rental);
     }
 }
