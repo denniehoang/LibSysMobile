@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 
 import com.example.libsysmobile.AsyncResponse;
+import com.example.libsysmobile.pages.LoginPage;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -19,6 +20,7 @@ import java.nio.charset.StandardCharsets;
 
 public abstract class DbQuery extends AsyncTask<String, String, String> implements AsyncResponse {
     public String mainURL = "http://ec2-18-218-197-217.us-east-2.compute.amazonaws.com:8084/api/v1";
+    public String token = LoginPage.token;
     public JSONObject result;
     public ProgressDialog progressDialog;
     public AsyncResponse delegate = null;
@@ -36,7 +38,7 @@ public abstract class DbQuery extends AsyncTask<String, String, String> implemen
             httpURLConnection.setRequestMethod(requestMethod);
             httpURLConnection.setDoOutput(doOutput);
             httpURLConnection.setDoInput(doInput);
-            httpURLConnection.setRequestProperty("Authorization", "Bearer " + "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3NMZXZlbCI6ImFkbWluIiwiaWF0IjoxNTU2NzQ1MTgyLCJleHAiOjE1NTY3ODgzODIsImlzcyI6IkxpYlN5cyBNb2JpbGUiLCJzdWIiOiJncm91cDIuaWNzNDk5QGdtYWlsLmNvbSJ9.mg05Mciho_dL-1HiZLPieYY9KMmQoWdlw3NgCdBz94Q7VvptujbWmWhWvOOpEM-BbopR9rPYQj5yviUQzzrE7HNLx-zdKhF6PG_Cda42U9MjHuzIkpHWJyxNBzor-N3VUCMeIt5p2y1e-LM9t2Cp1osAoUQlB_WSUSmMV9orP8A");
+            httpURLConnection.setRequestProperty("Authorization", "Bearer " + token);
             httpURLConnection.setRequestProperty("Content-Type", "application/json");
             httpURLConnection.setRequestProperty("Accept", "application/json");
             OutputStreamWriter wr = new OutputStreamWriter(httpURLConnection.getOutputStream());
@@ -67,7 +69,9 @@ public abstract class DbQuery extends AsyncTask<String, String, String> implemen
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod(requestMethod);
             httpURLConnection.setDoOutput(doOutput);
-            httpURLConnection.setRequestProperty("Authorization", "Bearer " + "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3NMZXZlbCI6ImFkbWluIiwiaWF0IjoxNTU2NzQ1MTgyLCJleHAiOjE1NTY3ODgzODIsImlzcyI6IkxpYlN5cyBNb2JpbGUiLCJzdWIiOiJncm91cDIuaWNzNDk5QGdtYWlsLmNvbSJ9.mg05Mciho_dL-1HiZLPieYY9KMmQoWdlw3NgCdBz94Q7VvptujbWmWhWvOOpEM-BbopR9rPYQj5yviUQzzrE7HNLx-zdKhF6PG_Cda42U9MjHuzIkpHWJyxNBzor-N3VUCMeIt5p2y1e-LM9t2Cp1osAoUQlB_WSUSmMV9orP8A");
+            httpURLConnection.setRequestProperty("Authorization", "Bearer " + token);
+            httpURLConnection.setRequestProperty("Content-Type", "application/json");
+            //httpURLConnection.setRequestProperty("Accept", "application/json");
             StringBuilder sb = new StringBuilder();
             int HttpResult = httpURLConnection.getResponseCode();
             if (HttpResult == HttpURLConnection.HTTP_OK) {

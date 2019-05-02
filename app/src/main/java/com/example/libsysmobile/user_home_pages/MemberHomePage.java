@@ -25,7 +25,7 @@ public class MemberHomePage extends Page {
         setContentView(R.layout.home_page_member);
         //Delete when done
         currentUser = new User("07167822");
-        getUserInfo(currentUser.getMemberID());
+        //  getUserInfo(currentUser.getMemberID());
     }
 
     public void searchBookOnClick(View view) {

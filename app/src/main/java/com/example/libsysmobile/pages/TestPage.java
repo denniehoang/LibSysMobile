@@ -8,6 +8,9 @@ import com.example.libsysmobile.queries.QueryItemID;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/*
+Testing getting Item ID using instance ID
+ */
 public class TestPage extends Page {
     @Override
     public void onCreate(Bundle savedInstanceState) {

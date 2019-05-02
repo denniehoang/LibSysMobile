@@ -10,7 +10,6 @@ import com.example.libsysmobile.R;
 import com.example.libsysmobile.User;
 import com.example.libsysmobile.queries.DbQuery;
 import com.example.libsysmobile.queries.QueryLoginAccount;
-import com.example.libsysmobile.user_home_pages.AdminHomePage;
 import com.example.libsysmobile.user_home_pages.LibrarianHomePage;
 import com.example.libsysmobile.user_home_pages.MemberHomePage;
 
@@ -34,6 +33,15 @@ public class LoginPage extends Page {
     public void loginOnClick(View view) {
         String emailAddress = et_emailAddress.getText().toString();
         String password = et_password.getText().toString();
+        /*
+        TODO:
+        Hardcoding login to use DELETE WHEN DONE
+         */
+        emailAddress = "group2.ics499@gmail.com";
+        password = "HorseApple25";
+        /*
+         */
+
         isValid = isValidFormat(emailAddress, password);
         if (isValid) {
             runQuery(emailAddress, password);
@@ -54,11 +62,6 @@ public class LoginPage extends Page {
         }
     }
 
-    // Delete when done
-    public void testOnClick(View view) {
-        changePage(this, TestPage.class);
-    }
-
     public void createAccountOnClick(View view) {
         changePage(this, CreateAccountPage.class);
     }
@@ -75,6 +78,8 @@ public class LoginPage extends Page {
 
     @Override
     public void processFinish(JSONObject result) throws JSONException {
+        String response = result.toString();
+        token = result.get("token").toString();
         String accessLevel = result.get("accessLevel").toString();
         String memberID = result.get("memberID").toString();
         currentUser = new User(memberID);
@@ -86,7 +91,9 @@ public class LoginPage extends Page {
                 changePage(LoginPage.this, LibrarianHomePage.class);
                 break;
             case ("admin"):
-                changePage(LoginPage.this, AdminHomePage.class);
+                //   changePage(LoginPage.this, AdminHomePage.class);
+                // TODO: USING THIS TO ROUTE TO DIFFERENT PAGES
+                changePage(LoginPage.this, MemberHomePage.class);
                 break;
             default:
                 alertDialogBuilder

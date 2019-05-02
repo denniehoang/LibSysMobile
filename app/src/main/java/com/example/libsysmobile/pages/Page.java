@@ -16,6 +16,7 @@ import org.json.JSONObject;
 public abstract class Page extends AppCompatActivity implements AsyncResponse {
     public static User currentUser;
     public static Item item;
+    public static String token;
     public static Rental itemRental;
     public AlertDialog.Builder alertDialogBuilder;
     public AlertDialog alertDialog;
