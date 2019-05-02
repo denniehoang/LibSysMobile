@@ -10,7 +10,7 @@ import android.widget.ListView;
 import com.example.libsysmobile.Item;
 import com.example.libsysmobile.R;
 import com.example.libsysmobile.queries.DbQuery;
-import com.example.libsysmobile.queries.QuerySearchBook;
+import com.example.libsysmobile.queries.QueryBrowseBooks;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -18,7 +18,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class SearchBookPage extends Page {
+
+public class BrowseBookPage extends Page {
     private ArrayList<Item> listOfItems = new ArrayList<>();
     private ArrayList<String> listOfResults = new ArrayList<>();
     private ArrayAdapter<String> adapter;
@@ -28,17 +29,15 @@ public class SearchBookPage extends Page {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.newPage(R.layout.search_for_book);
+        super.newPage(R.layout.browse_books);
         resultsView = findViewById(R.id.listView_bookResults);
         et_title = findViewById(R.id.et_search_book_title);
+        et_title.setVisibility(View.INVISIBLE);
         alertDialogBuilder = new AlertDialog.Builder(this);
         adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1,
                 listOfResults);
         resultsView.setAdapter(adapter);
-    }
-
-    public void searchBookOnClick(View view) {
         String title = et_title.getText().toString();
         runQuery(title);
     }
@@ -49,9 +48,9 @@ public class SearchBookPage extends Page {
     }
 
     public void runQuery(String title) {
-        DbQuery querySearchBook = new QuerySearchBook(this);
-        querySearchBook.delegate = this;
-        querySearchBook.execute(title);
+        DbQuery queryBrowseBook = new QueryBrowseBooks(this);
+        queryBrowseBook.delegate = this;
+        queryBrowseBook.execute(title);
     }
 
     @Override
@@ -69,6 +68,3 @@ public class SearchBookPage extends Page {
         }
     }
 }
-
-
-

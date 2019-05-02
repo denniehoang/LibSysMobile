@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -8,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_user"
-    tools:context=".user_home_pages.LibrarianHomePage">
+    tools:context=".user_home_pages.MemberHomePage">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -78,6 +77,7 @@
                         android:id="@+id/btn_member_browse"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
+                        android:onClick="browseOnClick"
                         android:src="@drawable/browse" />
 
                     <TextView
@@ -114,6 +114,7 @@
                         android:id="@+id/btn_member_search"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
+                        android:onClick="searchBookOnClick"
                         android:src="@drawable/search" />
 
                     <TextView
@@ -149,6 +150,7 @@
                     <ImageButton
                         android:layout_width="100dp"
                         android:layout_height="100dp"
+                        android:onClick="extendOnClick"
                         android:src="@drawable/extend" />
 
                     <TextView
@@ -192,6 +194,7 @@
                         android:text="My Account"
                         android:textColor="#000"
                         android:textSize="18sp"
+                        android:onClick="myAccountOnClick"
                         android:textStyle="bold" />
 
                 </LinearLayout>

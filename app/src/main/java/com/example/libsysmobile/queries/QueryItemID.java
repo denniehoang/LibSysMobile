@@ -2,11 +2,11 @@ package com.example.libsysmobile.queries;
 
 import android.content.Context;
 
-public class QuerySearchBook extends DbQuery {
+public class QueryItemID extends DbQuery {
 
-    private String urlApi = mainURL + "/items/search";
+    String urlApi = mainURL + "/itemInstances/by/ID/";
 
-    public QuerySearchBook(Context context) {
+    public QueryItemID(Context context) {
         super(context);
     }
 
@@ -19,8 +19,8 @@ public class QuerySearchBook extends DbQuery {
     // Runs script to database
     @Override
     protected String doInBackground(String... params) {
-        String title = params[0];
-        urlApi = urlApi + "?title=" + title;
+        String itemInstanceID = params[0];
+        urlApi = urlApi + itemInstanceID;
         super.connectJQuery(urlApi, "GET", false, true);
         return null;
     }

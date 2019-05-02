@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.example.libsysmobile.R;
+import com.example.libsysmobile.User;
 import com.example.libsysmobile.queries.DbQuery;
 import com.example.libsysmobile.queries.QueryLoginAccount;
 import com.example.libsysmobile.user_home_pages.AdminHomePage;
@@ -55,7 +56,7 @@ public class LoginPage extends Page {
 
     // Delete when done
     public void testOnClick(View view) {
-        changePage(this, SearchBookPage.class);
+        changePage(this, TestPage.class);
     }
 
     public void createAccountOnClick(View view) {
@@ -75,6 +76,8 @@ public class LoginPage extends Page {
     @Override
     public void processFinish(JSONObject result) throws JSONException {
         String accessLevel = result.get("accessLevel").toString();
+        String memberID = result.get("memberID").toString();
+        currentUser = new User(memberID);
         switch (accessLevel) {
             case ("member"):
                 changePage(LoginPage.this, MemberHomePage.class);

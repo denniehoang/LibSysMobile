@@ -6,12 +6,17 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.libsysmobile.AsyncResponse;
+import com.example.libsysmobile.Item;
+import com.example.libsysmobile.Rental;
+import com.example.libsysmobile.User;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public abstract class Page extends AppCompatActivity implements AsyncResponse {
-
+    public static User currentUser;
+    public static Item item;
+    public static Rental itemRental;
     public AlertDialog.Builder alertDialogBuilder;
     public AlertDialog alertDialog;
 
@@ -27,4 +32,6 @@ public abstract class Page extends AppCompatActivity implements AsyncResponse {
     @Override
     public void processFinish(JSONObject result) throws JSONException {
     }
+
+
 }

@@ -5,35 +5,34 @@ import android.content.Context;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class QuerySearchMember extends DbQuery {
-    String urlApi = mainURL + "/users/by/userID/:userID";
+public class QueryCurrentRentals extends DbQuery {
+    private String apiUrl = mainURL + "/loans/by/memberID";
 
-
-    public QuerySearchMember(Context context) {
+    public QueryCurrentRentals(Context context) {
         super(context);
     }
 
+    // Displays process dialog to user indicating process in progress
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        super.runProgressDialog("Searching...");
+        super.runProgressDialog("Searching for rentals...");
     }
 
-    // Runs script to database
+    // Runs php script to database
     @Override
     protected String doInBackground(String... params) {
-        String id = params[0];
-        int memberID = Integer.parseInt(id);
+        String memberID = params[0];
         try {
-            super.connect(urlApi, "GET", true, true, createPostData(memberID));
+            super.connect(apiUrl, "POST", true, true, createPostData(memberID));
         } catch (JSONException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    // Creating POST data to be sent to the api
-    private JSONObject createPostData(int memberID) throws JSONException {
+    // Creating POST data to be sent to the php
+    private JSONObject createPostData(String memberID) throws JSONException {
         JSONObject postData = new JSONObject();
         postData.put("memberID", memberID);
         return postData;

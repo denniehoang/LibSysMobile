@@ -36,6 +36,7 @@ public abstract class DbQuery extends AsyncTask<String, String, String> implemen
             httpURLConnection.setRequestMethod(requestMethod);
             httpURLConnection.setDoOutput(doOutput);
             httpURLConnection.setDoInput(doInput);
+            httpURLConnection.setRequestProperty("Authorization", "Bearer " + "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3NMZXZlbCI6ImFkbWluIiwiaWF0IjoxNTU2NzQ1MTgyLCJleHAiOjE1NTY3ODgzODIsImlzcyI6IkxpYlN5cyBNb2JpbGUiLCJzdWIiOiJncm91cDIuaWNzNDk5QGdtYWlsLmNvbSJ9.mg05Mciho_dL-1HiZLPieYY9KMmQoWdlw3NgCdBz94Q7VvptujbWmWhWvOOpEM-BbopR9rPYQj5yviUQzzrE7HNLx-zdKhF6PG_Cda42U9MjHuzIkpHWJyxNBzor-N3VUCMeIt5p2y1e-LM9t2Cp1osAoUQlB_WSUSmMV9orP8A");
             httpURLConnection.setRequestProperty("Content-Type", "application/json");
             httpURLConnection.setRequestProperty("Accept", "application/json");
             OutputStreamWriter wr = new OutputStreamWriter(httpURLConnection.getOutputStream());

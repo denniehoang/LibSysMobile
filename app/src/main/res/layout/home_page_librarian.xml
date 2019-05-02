@@ -183,7 +183,7 @@
                     <ImageButton
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:onClick="adjustInventoryOnClick"
+                        android:onClick="manageUserOnClick"
                         android:src="@drawable/manage_users" />
 
                     <TextView

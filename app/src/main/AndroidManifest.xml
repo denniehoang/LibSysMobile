@@ -23,14 +23,16 @@
         <activity android:name=".user_home_pages.AdminHomePage"/>
         <activity android:name=".user_home_pages.MemberHomePage"/>
         <activity android:name=".pages.SearchBookPage" />
+        <activity android:name=".pages.BrowseBookPage" />
         <activity android:name=".pages.UnlockUserPage" />
+        <activity android:name=".pages.ExtendRentalPage" />
+        <activity android:name=".pages.TestPage" />
         <activity
             android:name=".pages.SplashPage"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

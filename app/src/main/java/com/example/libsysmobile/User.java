@@ -4,9 +4,19 @@ import java.util.ArrayList;
 
 public class User {
 
-    private int memberID;
-    private int feesOwed;
-    private ArrayList<String> booksRented = new ArrayList<>();
+    public ArrayList<Item> currentRentalsList;
+    private String memberID;
 
+    public User(String memberID) {
+        this.memberID = memberID;
+        currentRentalsList = new ArrayList<>();
+    }
 
+    public String getMemberID() {
+        return memberID;
+    }
+
+    public void addRental(Item item) {
+        currentRentalsList.add(item);
+    }
 }

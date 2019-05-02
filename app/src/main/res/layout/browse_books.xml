@@ -24,7 +24,7 @@
                 android:id="@+id/hometxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Search For Book"
+                android:text="Browse For Books"
                 android:textColor="#FFFF"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -48,30 +48,14 @@
 
             <ListView
                 android:id="@+id/listView_bookResults"
-                android:layout_width="375dp"
-                android:layout_height="419dp"
-                android:layout_marginTop="241dp"
+                android:layout_width="362dp"
+                android:layout_height="602dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.85"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="1.0" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Enter Title to Search:"
-                android:textColor="@color/textBlack"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.004"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.026"
-                tools:ignore="MissingConstraints" />
 
             <EditText
                 android:id="@+id/et_search_book_title"
@@ -90,25 +74,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.083"
-                tools:ignore="MissingConstraints" />
-
-            <Button
-                android:id="@+id/search_for_book_button"
-                android:layout_width="325dp"
-                android:layout_height="48dp"
-                android:layout_gravity="bottom"
-                android:layout_margin="24dp"
-                android:background="@drawable/btn_corner"
-                android:backgroundTint="@color/theme1green"
-                android:onClick="searchBookOnClick"
-                android:text="Search"
-                android:textColor="@android:color/white"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.179"
                 tools:ignore="MissingConstraints" />
 
 

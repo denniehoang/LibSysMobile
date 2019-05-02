@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.example.libsysmobile.R;
 import com.example.libsysmobile.pages.Page;
+import com.example.libsysmobile.pages.SearchBookPage;
 
 public class LibrarianHomePage extends Page {
 
@@ -20,16 +21,21 @@ public class LibrarianHomePage extends Page {
     }
 
     public void searchBookOnClick(View view) {
-
+        changePage(this, SearchBookPage.class);
     }
-
-
     public void adjustInventoryOnClick(View view) {
 
     }
 
-    public void manageUsersOnClick(View view) {
+    public void addBookOnClick(View view) {
 
     }
 
+    public void removeBookOnClick(View view) {
+
+    }
+
+    public void manageUserOnClick(View view) {
+
+    }
 }
